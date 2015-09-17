@@ -6,8 +6,8 @@ var SPAWN_RATE = 1.25;
 
 var state = {
     preload: function() {
-        this.load.spritesheet("player",'http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/player.png', 48, 48);
-        this.load.image("wall", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/wall.png");
+        this.load.spritesheet("player",'images/player.png', 48, 48);
+        this.load.image("wall", "images/pila.png");
         this.load.image("background", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/background-texture.png");
         this.load.audio("jet", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/jet.wav");
         this.load.audio("score", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/score.wav");
