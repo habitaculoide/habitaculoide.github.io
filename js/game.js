@@ -8,16 +8,23 @@ var state = {
     preload: function() {
         this.load.spritesheet("player",'images/player.png', 48, 48);
         this.load.image("wall", "images/pila.png");
-        this.load.image("background", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/background-texture.png");
-        this.load.audio("jet", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/jet.wav");
+        this.load.image("background", "images/background-texture.png");
+
+        this.load.audio("jet", "audio/hurt.wav");
+
         this.load.audio("score", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/score.wav");
-        this.load.audio("hurt", "http://games.jessefreeman.com/wp-content/public/workshop/phaser/assets/hurt.wav");
+        this.load.audio("hurt", ['audio/ai_migas.mp3', 'audio/ai_migas.ogg']);
+        this.load.audio("trololo", ['audio/trololo.mp3', 'audio/trololo.ogg']);
+
+
     },
     create: function(){
 
+        this.htmlBody = $('body');
         this.jetSnd = this.add.audio("jet");
         this.scoreSnd = this.add.audio("score");
         this.hurtSnd = this.add.audio("hurt");
+        this.trololo = this.add.audio("trololo");
 
         this.background = this.add.tileSprite(0,0,this.world.width, this.world.height, "background");
 
@@ -47,12 +54,20 @@ var state = {
         this.input.onDown.add(this.jet, this);
 
 
-        //this.spawnWall(300);
-        //this.spawnWall(300, true);
+        this.spawnWall(300);
+        this.spawnWall(300, true);
 
         this.reset();
     },
+
+    hasLooped : function(sound) {
+    console.log("bass looped!");
+},
     update: function(){
+
+        if(!this.trololo.isPlaying){
+            this.trololo.play('');
+        }
         if(this.gameStarted){
 
             if(this.player.body.velocity.y > -20){
@@ -90,6 +105,8 @@ var state = {
 
         this.background.autoScroll(-SPEED *.80,0);
 
+        this.htmlBody.find('#ai_migas_img').addClass('hidden');
+
         this.gameStarted = false;
         this.gameOver = false;
         this.score = 0;
@@ -98,7 +115,7 @@ var state = {
         this.player.reset(this.world.width/4, this.world.centerY);
         this.player.animations.play("fly");
 
-        this.scoreText.setText("TOUCH TO\nSTART GAME");
+        this.scoreText.setText("Toca-me para começar o jogo\nTenta desviar a Rute dos obstaculos!");
 
         this.walls.removeAll();
     },
@@ -124,7 +141,7 @@ var state = {
     },
     setGameOver: function(){
         this.gameOver = true;
-        this.scoreText.setText("FINAL SCORE\n"+this.score+"\n\nTOUCH TO\nTRY AGAIN");
+        this.scoreText.setText("Pontuacao Final\n"+this.score+"\n\nToca para\ntentar novamente");
         this.timeOver = this.time.now;
 
         this.walls.forEachAlive(function(wall){
@@ -137,7 +154,8 @@ var state = {
         this.background.autoScroll(0,0);
 
         this.player.body.velocity.x = 0;
-        this.hurtSnd.play();
+        this.hurtSnd.play('', 0, 5);
+        this.htmlBody.find('#ai_migas_img').removeClass('hidden');
     },
 
     spawnWall: function(y, flipped){
@@ -173,7 +191,7 @@ var state = {
 };
 
 var game = new Phaser.Game(
-    320,
+    500,
     568,
     Phaser.CANVAS,
     document.querySelector('#screen'),

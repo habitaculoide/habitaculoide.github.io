@@ -1,23 +1,69 @@
 <html>
 <head>
     <title>Habitaculoide - O gajo que não vai as coisas</title>
+    <meta charset="utf-8"/>
+<!--
+    <meta property="og:title" content="Habitaculoide - O gajo que não vai as coisas" />
+    <meta property="og:site_name" content="Habitaculoide - O gajo que não vai as coisas"/>
+    <meta property="og:url" content="http://habitaculoide.github.io" />
+    <meta property="og:description" content="O gajo que não vai as coisas" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:image" content="http://habitaculoide.github.io/images/facebook.png" />
+
+    <meta name="description" content="Habitaculoide O gajo que não vai as coisas">
+    <meta name="robots" content="Habitaculoide O gajo que não vai as coisas">
+    <meta name="googlebot" content="Habitaculoide O gajo que não vai as coisas">
+-->
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.4&appId=174517066079398";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <style>
         body {
-            background: #333;
+            background: #85c8c5;
             margin: 0;
             padding: 0;
+            color: #fff;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
         #screen {
-            margin: 0 auto;
+            margin: 10px auto;
             max-height: 568px;
-            max-width: 320px;
+            max-width: 500px;
+            box-shadow:  0px 0px 6px 0px rgba(0, 0, 0, 0.58);
+
+        }
+        #content{
+            width: 500px;
+            margin:auto;
+            margin-top: 10px;
+        }
+        #ai_migas_img{
+            position: absolute;
+            left: 36%;
+            width: 350px;
+            top: 360px;
+        }
+        .hidden{
+            display: none;
         }
     </style>
-    <h2 align="center">"O gajo que não vai as coisas"</h2>
-    <div id="screen"></div>
-
+    <img src="images/ai_migas.jpg" alt="" id="ai_migas_img" class="hidden"/>
+    <div id="content">
+        <h2 align="center">"O gajo que não vai as coisas"</h2>
+        <div id="screen"></div>
+        <div class="fb-share-button" data-href="http://habitaculoide.github.io" data-layout="button_count"></div>
+        <h4>Habitaculoide</h4>
+        <p>Pessoa que vive muito dentro de casa, raramente sai, tem hábitos muito caseiros, gosta de computador, internet, televisão, filmes, enfim, aproveita ao máximo os recursos domésticos para viver feliz! Uma pessoa reclusa, que gosta de espaços mínimos, se satisfaz em viver em um habitáculo. O Sonho de todo habitaculoide é um habitáculo cada vez mais auto-suficiente!</p>
+    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://games.jessefreeman.com/wp-content/public/workshop/phaser/phaser.min.js"></script>
     <script src="js/game.js"></script>
 </body>
