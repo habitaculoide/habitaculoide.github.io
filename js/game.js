@@ -115,7 +115,7 @@ var state = {
         this.player.reset(this.world.width/4, this.world.centerY);
         this.player.animations.play("fly");
 
-        this.scoreText.setText("Toca-me para começar o jogo\nTenta desviar a Rute dos obstaculos!");
+        this.scoreText.setText("Toca-me para começar o jogo\nTenta desviar o Runte dos obstaculos!");
 
         this.walls.removeAll();
     },
